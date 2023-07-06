@@ -8,6 +8,14 @@ const web3 = new Web3(process.env.RPC_API);
 const privateKey = process.env.PRIVATE_KEY;
 const senderAddress = process.env.SENDER_ADDRESS;
 const receiptAddress = process.env.RECEIPT_ADDRESS;
+const dataObject = {
+  name: "dafa",
+  email: "dafa@gmail.com",
+  phone: "081123456789",
+  company: "xxx",
+  title: "xxxx",
+};
+const dataHex = web3.utils.utf8ToHex(JSON.stringify(dataObject));
 
 (async () => {
   try {
@@ -17,7 +25,7 @@ const receiptAddress = process.env.RECEIPT_ADDRESS;
 
     const nonce = await web3.eth.getTransactionCount(senderAddress);
     const gasPrice = 20e9;
-    const gasLimit = web3.utils.toHex(21000);
+    const gasLimit = web3.utils.toHex(31000);
 
     const rawTransaction = {
       from: senderAddress,
@@ -26,7 +34,7 @@ const receiptAddress = process.env.RECEIPT_ADDRESS;
       gasPrice,
       gasLimit,
       nonce: web3.utils.toHex(nonce),
-      data: "",
+      data: dataHex,
     };
 
     const signedTransaction = await web3.eth.accounts.signTransaction(

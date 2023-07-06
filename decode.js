@@ -1,0 +1,6 @@
+const hexString =
+  "7b226e616d65223a2264616661222c22656d61696c223a226461666140676d61696c2e636f6d222c2270686f6e65223a22303831313233343536373839222c22636f6d70616e79223a22787878222c227469746c65223a2278787878227d";
+const decodedString = Buffer.from(hexString, "hex").toString();
+
+console.log(decodedString);
+// { name: "dafa", email: "dafa@gmail.com" }
