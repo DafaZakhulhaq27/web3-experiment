@@ -45,7 +45,8 @@
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
-
+const PrivateKeyProvider = require("@truffle/hdwallet-provider");
+const privateKey = "c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3";
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -69,6 +70,10 @@ module.exports = {
      port: 8545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
     },
+    quickstartWallet: {
+      provider: () => new PrivateKeyProvider(privateKey, "http://13.214.29.2:8545"),
+      network_id: "*"
+    }
     //
     // An additional network, but with some advanced options…
     // advanced: {

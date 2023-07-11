@@ -2,17 +2,19 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 contract dummy_contract {
-  string public greeting;
+  uint public count;
+  
+    function get() public view returns (uint) {
+        return count;
+    }
 
-  constructor() public {
-      greeting = "Hello, World!";
-  }
+    function inc() public {
+        count += 1;
+    }
 
-  function setGreeting(string memory _greeting) public {
-      greeting = _greeting;
-  }
-
-  function getGreeting() public view returns (string memory) {
-      return greeting;
-  }
+    function dec() public {
+      if (count > 0){
+        count -= 1;
+      }          
+    }
 }
